@@ -5,7 +5,7 @@ var ImageAnnotations = {}
 var currentImage = ""
 
 //var base_app_url = "https://cf6e-128-205-33-151.ngrok-free.app"
-var base_app_url = "https://5b74-128-205-33-151.ngrok.io" // my server ngrok
+var base_app_url = "https://5c80-128-205-33-151.ngrok.io" // my server ngrok
 var items_list = []
 
 var sample_labels = [] //["Apple", "Banana", "Mango", "Orange"]

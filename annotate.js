@@ -176,7 +176,7 @@ function changeImage(evt){
     evt.currentTarget.style.width = "55px";
     evt.currentTarget.style.height = "55px";
 }
-
+var boundingBoxes = [];
 var elements = document.getElementsByClassName("imgthumb");
 for (var i = 0; i < elements.length; i++) {
     elements[i].data_id = i;
@@ -261,7 +261,7 @@ for (var i = 0; i < elements.length; i++) {
                 setTimeout(() => {
                     selectionRectangle.visible(false);
                 });
-                var boundingBoxes = [];
+                
                 var shapes = stage.find('.rect');
                 var box = selectionRectangle.getClientRect();
                 var selected = shapes.filter((shape) =>

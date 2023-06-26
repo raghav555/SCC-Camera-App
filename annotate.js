@@ -5,7 +5,10 @@ var ImageAnnotations = {}
 var currentImage = ""
 
 //var base_app_url = "https://cf6e-128-205-33-151.ngrok-free.app"
+//var base_app_url = "http://localhost:5000"
+//var base_app_url = "https://64da-38-95-255-16.ngrok-free.app"
 var base_app_url = "https://8386-128-205-33-151.ngrok.io" // my server ngrok
+//var base_app_url = "https://cf68-2620-cc-8000-1c83-2110-ec2b-56a2-621b.ngrok-free.app" // local ngrok
 var items_list = []
 
 var sample_labels = [] //["Apple", "Banana", "Mango", "Orange"]
@@ -84,6 +87,19 @@ document.getElementById("getpredbtn").addEventListener("click", function(){
     // var quantity = "NA"
   });
 
+
+  // Commented code for Text Prediction Button Listener
+  // document.getElementById("gettextbtn").addEventListener("click", function(){
+  //   ImageAnnotations["img_"+currentImage]["location"] = {
+  //       "latitude": latitude,
+  //       "longitude": longitude
+  //   }
+  //   ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
+  //   sendTextImages(ImageAnnotations["img_"+currentImage])
+  //   // var price = "NA"
+  //   // var quantity = "NA"
+  // });
+
 function editItem(item){
   document.getElementById("myInput").value = item;
   document.getElementById("price").value = "";
@@ -109,6 +125,7 @@ document.getElementById("save_btn").addEventListener("click", function(){
 
   ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
   ImageAnnotations["img_"+currentImage]["seq_id"] = currentImage
+  ImageAnnotations["img_"+currentImage]["bounding_boxes"] = boundingBoxes
   sendImagesAndAnnotations(ImageAnnotations["img_"+currentImage])
 });
 
@@ -244,14 +261,20 @@ for (var i = 0; i < elements.length; i++) {
                 setTimeout(() => {
                     selectionRectangle.visible(false);
                 });
-
+                var boundingBoxes = [];
                 var shapes = stage.find('.rect');
                 var box = selectionRectangle.getClientRect();
                 var selected = shapes.filter((shape) =>
                     Konva.Util.haveIntersection(box, shape.getClientRect())
                 );
                 tr.nodes(selected);
+                // Store bounding box coordinates in the array
+                  selected.forEach((shape) => {
+                    var boundingBox = shape.getClientRect();
+                    boundingBoxes.push(boundingBox);
+                });
             });
+            console.log('bounding boxes are' + boundingBoxes)
             var rect_count = 0
             function createRect(x, y) {
                 console.log("Inside createRect")
@@ -334,13 +357,15 @@ for (var i = 0; i < elements.length; i++) {
                     var pos = stage.getPointerPosition();
                     createRect(pos.x, pos.y)
                     var all_rectangles = layer.find('.rect_btn_grp');
-                    console.log(all_rectangles)
+                    console.log('all rectangles are ',all_rectangles)
                     return;
                 }
             });
         };
     });
 }
+
+console.log('elements from Konva are ', elements)
 
 elements[0].click()
 
@@ -362,6 +387,46 @@ function sendImages(dataToSend){
                   "<div class='pred_tablet' id = '" + sample_labels[i] + "' onclick='editItem(\"" + sample_labels[i] + "\")'> \
                       <div class='tabtext item'>" + sample_labels[i] + "</div>"
                   "</div>"
+      }  
+    })
+}
+
+function createList(data) {
+  ul = document.getElementById("textpredlist"); // Create a new <ul> element
+
+  data.forEach(item => {
+    const li = document.createElement('li'); // Create a new <li> element
+    li.textContent = item; // Set the text content of the <li> element to the item value
+    ul.appendChild(li); // Append the <li> element to the <ul> element
+  });
+
+  // Add the <ul> element to the document body or a specific container element
+  //document.body.appendChild(ul); // Append to the document body
+  // OR
+  // document.getElementById('container').appendChild(ul); // Append to a specific container element with ID 'container'
+}
+
+function sendTextImages(dataToSend){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  headers.append('Accept', 'application/json');
+  
+  headers.append('Origin',base_app_url + '/text_detection/');
+  console.log('data to send is ',dataToSend)
+  fetch(base_app_url + '/text_detection/', {
+      method: 'POST',
+      body: JSON.stringify(dataToSend), /* or aFile[0]*/
+    }).then(response => response.json())
+    .then(response => {
+      console.log('response from text detection is ' + response['data'])
+      sample_labels = response['data']
+      //rec_texts_det = response["rec_texts"]
+      //print('rec_texts_det is ', rec_texts_det)
+      //createList(sample_labels);
+
+      for (var i = 0; i < sample_labels.length; i++) {
+        document.getElementById("textpred").innerHTML += 
+                  "<li>" + sample_labels[i] + "</li>"
       }  
     })
 }
@@ -392,9 +457,6 @@ function sendImagesAndAnnotations(dataToSend){
         alert('Saving failed due to network error or cross domain')
       })
 }
-
-
-
 
 
 // imageObj.src = 'https://previews.123rf.com/images/posinote/posinote1711/posinote171100095/91013749-mixed-many-type-of-fruits-with-full-frame-and-vertical-photo-.jpg'

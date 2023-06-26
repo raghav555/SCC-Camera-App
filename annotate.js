@@ -126,6 +126,7 @@ document.getElementById("save_btn").addEventListener("click", function(){
   ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
   ImageAnnotations["img_"+currentImage]["seq_id"] = currentImage
   ImageAnnotations["img_"+currentImage]["bounding_boxes"] = boundingBoxes
+  console.log('bounding box in save button is ' + boundingBoxes)
   sendImagesAndAnnotations(ImageAnnotations["img_"+currentImage])
 });
 
@@ -358,6 +359,7 @@ for (var i = 0; i < elements.length; i++) {
                     createRect(pos.x, pos.y)
                     var all_rectangles = layer.find('.rect_btn_grp');
                     console.log('all rectangles are ',all_rectangles)
+                    boundingBoxes = all_rectangles
                     return;
                 }
             });

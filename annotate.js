@@ -359,7 +359,7 @@ for (var i = 0; i < elements.length; i++) {
                     createRect(pos.x, pos.y)
                     var all_rectangles = layer.find('.rect_btn_grp');
                     console.log('all rectangles are ',all_rectangles)
-                    //boundingBoxes = all_rectangles
+                    boundingBoxes = all_rectangles
                     return;
                 }
             });

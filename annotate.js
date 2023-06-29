@@ -7,8 +7,8 @@ var currentImage = ""
 //var base_app_url = "https://cf6e-128-205-33-151.ngrok-free.app"
 //var base_app_url = "http://localhost:5000"
 //var base_app_url = "https://64da-38-95-255-16.ngrok-free.app"
-//var base_app_url = "https://8386-128-205-33-151.ngrok.io" // my server ngrok
-var base_app_url = "https://fa77-128-205-33-151.ngrok.io" // local ngrok
+var base_app_url = "https://8386-128-205-33-151.ngrok.io" // my server ngrok
+//var base_app_url = "https://cf68-2620-cc-8000-1c83-2110-ec2b-56a2-621b.ngrok-free.app" // local ngrok
 var items_list = []
 
 var sample_labels = [] //["Apple", "Banana", "Mango", "Orange"]
@@ -270,12 +270,21 @@ for (var i = 0; i < elements.length; i++) {
                 );
                 tr.nodes(selected);
                 // Store bounding box coordinates in the array
+                var boundingBoxesData = [];
                   selected.forEach((shape) => {
                     var boundingBox = shape.getClientRect();
-                    boundingBoxes.push(boundingBox);
+                    boundingBoxesData.push({
+                      x1: boundingBox.x,
+                      y1: boundingBox.y,
+                      x2: boundingBox.x + boundingBox.width,
+                      y2: boundingBox.y + boundingBox.height
+                    });
                 });
             });
-            console.log('bounding boxes are' + boundingBoxes)
+            var currentImageId = "img_" + evt.currentTarget.data_id;
+            ImageAnnotations[currentImageId].boundingBoxes = boundingBoxesData;
+
+            console.log('ImageAnnotations:', ImageAnnotations);
             var rect_count = 0
             function createRect(x, y) {
                 console.log("Inside createRect")

@@ -281,10 +281,10 @@ for (var i = 0; i < elements.length; i++) {
                     });
                 });
             });
-            var currentImageId = "img_" + evt.currentTarget.data_id;
-            ImageAnnotations[currentImageId].boundingBoxes = boundingBoxesData;
+            // var currentImageId = "img_" + evt.currentTarget.data_id;
+            // ImageAnnotations[currentImageId].boundingBoxes = boundingBoxesData;
 
-            console.log('ImageAnnotations:', ImageAnnotations);
+            // console.log('ImageAnnotations:', ImageAnnotations);
             var rect_count = 0
             function createRect(x, y) {
                 console.log("Inside createRect")

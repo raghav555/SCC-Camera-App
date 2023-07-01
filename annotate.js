@@ -157,7 +157,8 @@ images = JSON.parse(images);
 console.log(images)
 var width = window.innerWidth;
 var height = window.innerHeight;
-
+console.log('width is ' + width)
+console.log('height is ' + height)
 var imghtml = ""
 i = 0
 for (const item of images) {

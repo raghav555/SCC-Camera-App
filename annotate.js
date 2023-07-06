@@ -125,8 +125,8 @@ document.getElementById("save_btn").addEventListener("click", function(){
 
   ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
   ImageAnnotations["img_"+currentImage]["seq_id"] = currentImage
-  ImageAnnotations["img_"+currentImage]["bounding_boxes"] = boundingBoxes
-  console.log('bounding box in save button is ' + boundingBoxes)
+  ImageAnnotations["img_"+currentImage]["bounding_boxes"] = all_rectangles
+  console.log('all_rectangles box in save button is ' + all_rectangles)
   sendImagesAndAnnotations(ImageAnnotations["img_"+currentImage])
 });
 

@@ -7,7 +7,7 @@ var currentImage = ""
 //var base_app_url = "https://cf6e-128-205-33-151.ngrok-free.app"
 //var base_app_url = "http://localhost:5000"
 //var base_app_url = "https://64da-38-95-255-16.ngrok-free.app"
-var base_app_url = "https://eee2-38-95-255-16.ngrok-free.app" // server ngrok
+var base_app_url = "https://8386-128-205-33-151.ngrok.io" // my server ngrok
 //var base_app_url = "https://cf68-2620-cc-8000-1c83-2110-ec2b-56a2-621b.ngrok-free.app" // local ngrok
 var items_list = []
 
@@ -37,7 +37,7 @@ function additemfunc(){
     document.getElementById("myInput").value = "";
     document.getElementById("price").value = "";
     document.getElementById("quantity").value = "";
-}
+} 
   
 document.getElementById('input-file')
   .addEventListener('change', getFile)
@@ -126,7 +126,7 @@ document.getElementById("save_btn").addEventListener("click", function(){
   ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
   ImageAnnotations["img_"+currentImage]["seq_id"] = currentImage
   ImageAnnotations["img_"+currentImage]["bounding_boxes"] = boundingBoxes
-  console.log('all_rectangles box in save button is ' + boundingBoxes)
+  console.log('bounding box in save button is ' + boundingBoxes)
   sendImagesAndAnnotations(ImageAnnotations["img_"+currentImage])
 });
 
@@ -159,7 +159,7 @@ var width = window.innerWidth;
 var height = window.innerHeight;
 console.log('width is ' + width)
 console.log('height is ' + height)
-var imghtml = ""
+var imghtml = "" 
 i = 0
 for (const item of images) {
     imghtml += '<img class="imgthumb" id="imgth_' +i + '" src="' + item[1] + ' "/>'
@@ -229,7 +229,10 @@ for (var i = 0; i < elements.length; i++) {
                 y1 = stage.getPointerPosition().y;
                 x2 = stage.getPointerPosition().x;
                 y2 = stage.getPointerPosition().y;
-
+                console.log('x1 on mousedown is ' + x1)
+                console.log('y1 on mousedown is ' + y1)
+                console.log('x2 on mousedown is ' + x2)
+                console.log('y2 on mousedown is ' + y2)
                 selectionRectangle.visible(true);
                 selectionRectangle.width(0);
                 selectionRectangle.height(0);
@@ -251,6 +254,10 @@ for (var i = 0; i < elements.length; i++) {
                     width: Math.abs(x2 - x1),
                     height: Math.abs(y2 - y1),
                 });
+                console.log('x1 on mousemove is ' + x1)
+                console.log('y1 on mousemove is ' + y1)
+                console.log('x2 on mousemove is ' + x2)
+                console.log('y2 on mousemove is ' + y2)
             });
 
             stage.on('mouseup touchend', (e) => {
@@ -281,7 +288,7 @@ for (var i = 0; i < elements.length; i++) {
                       y2: boundingBox.y + boundingBox.height
                     });
                 });
-		boundingBoxes = boundingBoxesData
+                boundingBoxes = boundingBoxesData
             });
             // var currentImageId = "img_" + evt.currentTarget.data_id;
             // ImageAnnotations[currentImageId].boundingBoxes = boundingBoxesData;
@@ -368,9 +375,11 @@ for (var i = 0; i < elements.length; i++) {
                     console.log("Empty Area - not rect", e)
                     var pos = stage.getPointerPosition();
                     createRect(pos.x, pos.y)
+                    console.log('x pos is ' + pos.x)
+                    console.log('x pos is ' + pos.y)
                     var all_rectangles = layer.find('.rect_btn_grp');
                     console.log('all rectangles are ',all_rectangles)
-                    boundingBoxes = all_rectangles
+                    //boundingBoxes = all_rectangles
                     return;
                 }
             });

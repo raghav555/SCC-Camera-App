@@ -193,7 +193,7 @@ for (var i = 0; i < elements.length; i++) {
         var stage = new Konva.Stage({
             container: 'container',
             width: width,
-            height: height,
+            height: (imageObj.height / imageObj.width) * width
         });
 
         var layer = new Konva.Layer();

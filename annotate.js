@@ -264,6 +264,10 @@ for (var i = 0; i < elements.length; i++) {
 
             stage.on('mouseup touchend', (e) => {
               console.log('in mouseup touchend')
+		console.log('x1 on mousemove touchend is ' + x1)
+                console.log('y1 on mousemove touchend is ' + y1)
+                console.log('x2 on mousemove touchend is ' + x2)
+                console.log('y2 on mousemove touchend is ' + y2)
                 // do nothing if we didn't start selection
                 if (!selectionRectangle.visible()) {
                     return;

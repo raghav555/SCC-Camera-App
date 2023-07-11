@@ -223,6 +223,11 @@ for (var i = 0; i < elements.length; i++) {
               console.log('in mouseup touchstart')
                 // do nothing if we mousedown on any shape
                 if (e.target !== stage) {
+                  console.log("1")
+                  console.log('x1 on mousedown is ' + x1)
+                  console.log('y1 on mousedown is ' + y1)
+                  console.log('x2 on mousedown is ' + x2)
+                  console.log('y2 on mousedown is ' + y2)
                     return;
                 }
                 e.evt.preventDefault();
@@ -230,6 +235,7 @@ for (var i = 0; i < elements.length; i++) {
                 y1 = stage.getPointerPosition().y;
                 x2 = stage.getPointerPosition().x;
                 y2 = stage.getPointerPosition().y;
+                console.log("2")
                 console.log('x1 on mousedown is ' + x1)
                 console.log('y1 on mousedown is ' + y1)
                 console.log('x2 on mousedown is ' + x2)

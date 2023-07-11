@@ -220,6 +220,7 @@ for (var i = 0; i < elements.length; i++) {
 
             var x1, y1, x2, y2;
             stage.on('mousedown touchstart', (e) => {
+              console.log('in mouseup touchstart')
                 // do nothing if we mousedown on any shape
                 if (e.target !== stage) {
                     return;
@@ -240,6 +241,7 @@ for (var i = 0; i < elements.length; i++) {
 
 
             stage.on('mousemove touchmove', (e) => {
+              console.log('in mouseup touchmove')
                 // do nothing if we didn't start selection
                 if (!selectionRectangle.visible()) {
                     return;
@@ -261,6 +263,7 @@ for (var i = 0; i < elements.length; i++) {
             });
 
             stage.on('mouseup touchend', (e) => {
+              console.log('in mouseup touchend')
                 // do nothing if we didn't start selection
                 if (!selectionRectangle.visible()) {
                     return;
@@ -379,7 +382,7 @@ for (var i = 0; i < elements.length; i++) {
                     console.log('x pos is ' + pos.y)
                     var all_rectangles = layer.find('.rect_btn_grp');
                     console.log('all rectangles are ',all_rectangles)
-                    boundingBoxes = all_rectangles
+                    //boundingBoxes = all_rectangles
                     return;
                 }
             });

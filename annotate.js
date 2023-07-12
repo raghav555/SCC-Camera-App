@@ -226,6 +226,7 @@ for (var i = 0; i < elements.length; i++) {
               console.log('in mouseup touchstart')
                 // do nothing if we mousedown on any shape
                 if (e.target !== stage) {
+		  console.log('e.target in touchstart is  ' + e.target)
                   console.log("1")
                   console.log('x1 on mousedown is ' + x1)
                   console.log('y1 on mousedown is ' + y1)
@@ -253,6 +254,7 @@ for (var i = 0; i < elements.length; i++) {
               console.log('in mouseup touchmove')
                 // do nothing if we didn't start selection
                 if (!selectionRectangle.visible()) {
+		    console.log('mousemove touchmove is default return ')
                     return;
                 }
                 e.evt.preventDefault();
@@ -279,6 +281,7 @@ for (var i = 0; i < elements.length; i++) {
                 console.log('y2 on mousemove touchend is ' + y2)
                 // do nothing if we didn't start selection
                 if (!selectionRectangle.visible()) {
+			console.log('mousemove touchend is default return ')
                     return;
                 }
                 e.evt.preventDefault();

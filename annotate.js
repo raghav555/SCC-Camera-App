@@ -225,15 +225,15 @@ for (var i = 0; i < elements.length; i++) {
             stage.on('mousedown touchstart', (e) => {
               console.log('in mouseup touchstart')
                 // do nothing if we mousedown on any shape
-                if (e.target !== stage) {
-		  console.log('e.target in touchstart is  ' + e.target)
-                  console.log("1")
-                  console.log('x1 on mousedown is ' + x1)
-                  console.log('y1 on mousedown is ' + y1)
-                  console.log('x2 on mousedown is ' + x2)
-                  console.log('y2 on mousedown is ' + y2)
-                    return;
-                }
+    //             if (e.target !== stage) {
+		  // console.log('e.target in touchstart is  ' + e.target)
+    //               console.log("1")
+    //               console.log('x1 on mousedown is ' + x1)
+    //               console.log('y1 on mousedown is ' + y1)
+    //               console.log('x2 on mousedown is ' + x2)
+    //               console.log('y2 on mousedown is ' + y2)
+    //                 return;
+    //             }
                 e.evt.preventDefault();
                 x1 = stage.getPointerPosition().x;
                 y1 = stage.getPointerPosition().y;
@@ -253,10 +253,10 @@ for (var i = 0; i < elements.length; i++) {
             stage.on('mousemove touchmove', (e) => {
               console.log('in mouseup touchmove')
                 // do nothing if we didn't start selection
-                if (!selectionRectangle.visible()) {
-		    console.log('mousemove touchmove is default return ')
-                    return;
-                }
+      //           if (!selectionRectangle.visible()) {
+		    // console.log('mousemove touchmove is default return ')
+      //               return;
+      //           }
                 e.evt.preventDefault();
                 x2 = stage.getPointerPosition().x;
                 y2 = stage.getPointerPosition().y;
@@ -280,10 +280,10 @@ for (var i = 0; i < elements.length; i++) {
                 console.log('x2 on mousemove touchend is ' + x2)
                 console.log('y2 on mousemove touchend is ' + y2)
                 // do nothing if we didn't start selection
-                if (!selectionRectangle.visible()) {
-			console.log('mousemove touchend is default return ')
-                    return;
-                }
+   //              if (!selectionRectangle.visible()) {
+			// console.log('mousemove touchend is default return ')
+   //                  return;
+   //              }
                 e.evt.preventDefault();
                 // update visibility in timeout, so we can check it in click event
                 setTimeout(() => {

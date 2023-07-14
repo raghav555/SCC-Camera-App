@@ -194,11 +194,11 @@ for (var i = 0; i < elements.length; i++) {
 	console.log('height in Konva stage is ' + (imageObj.height / imageObj.width) * width)
         var stage = new Konva.Stage({
             container: 'container',
-            //width: width,
+            width: width,
 	    //height: (imageObj.height / imageObj.width) * width,
-	    width: imageObj.width,
-	    height: imageObj.height
-            //height: (imageObj.height / imageObj.width) * width
+	    //width: imageObj.width,
+	    //height: imageObj.height
+            height: (imageObj.height / imageObj.width) * width
 	
         });
 
@@ -212,9 +212,9 @@ for (var i = 0; i < elements.length; i++) {
                 x: 0,
                 y: 0,
                 image: imageObj,
-                width: imageObj.width,
-	 	height: imageObj.height
-                //height: (imageObj.height / imageObj.width) * width
+                width: width,
+	 	//height: imageObj.height
+                height: (imageObj.height / imageObj.width) * width
             });
             layer.add(image)
 

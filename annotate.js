@@ -190,10 +190,14 @@ for (var i = 0; i < elements.length; i++) {
         var imageObj = new Image();
         imageObj.src = evt.srcElement.currentSrc;
         console.log(imageObj.width, imageObj.height, evt.currentTarget.data_id);
+	console.log('width in Konva stage is ' + width)
+	console.log('height in Konva stage is ' + (imageObj.height / imageObj.width) * width)
         var stage = new Konva.Stage({
             container: 'container',
-            width: imageObj.width,
-	    height: imageObj.height
+            width: width,
+	    height: (imageObj.height / imageObj.width) * width,
+	    //width: imageObj.width,
+	    //height: imageObj.height
             //height: (imageObj.height / imageObj.width) * width
 	
         });
@@ -201,15 +205,16 @@ for (var i = 0; i < elements.length; i++) {
         var layer = new Konva.Layer();
         stage.add(layer);
 
-
+	console.log('width in Konva image is ' + width)
+	console.log('height in Konva image is ' + (imageObj.height / imageObj.width) * width)
         imageObj.onload = function () {
             var image = new Konva.Image({
                 x: 0,
                 y: 0,
                 image: imageObj,
-                width: imageObj.width,
-	 	height: imageObj.height
-                //height: (imageObj.height / imageObj.width) * width
+                width: width,
+	 	//height: height
+                height: (imageObj.height / imageObj.width) * width
             });
             layer.add(image)
 

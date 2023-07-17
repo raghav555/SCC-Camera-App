@@ -7,7 +7,7 @@ var currentImage = ""
 //var base_app_url = "https://cf6e-128-205-33-151.ngrok-free.app"
 //var base_app_url = "http://localhost:5000"
 //var base_app_url = "https://64da-38-95-255-16.ngrok-free.app"
-var base_app_url = "https://94b0-2620-cc-8000-1c83-6c99-2a22-589b-51a6.ngrok-free.app" // my server ngrok
+var base_app_url = "https://992d-2620-cc-8000-1c83-5d24-20b2-8520-848e.ngrok-free.app" // my server ngrok
 //var base_app_url = "https://cf68-2620-cc-8000-1c83-2110-ec2b-56a2-621b.ngrok-free.app" // local ngrok
 var items_list = []
 

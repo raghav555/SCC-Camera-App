@@ -23,7 +23,7 @@ var constraints = { video: { facingMode: { exact: 'environment' } }, audio: fals
 var track = null;
 var fd = new FormData();
 //var base_app_url = "https://cf6e-128-205-33-151.ngrok-free.app"
-var base_app_url = "https://4792-128-205-33-151.ngrok.io" // my server ngrok
+var base_app_url = "https://0e28-128-205-33-151.ngrok.io" // my server ngrok
 
 // Define constants
 function getlocation() {
